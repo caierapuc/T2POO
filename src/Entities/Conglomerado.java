@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Conglomerado {
 	private ArrayList<Usina> usinas;
 
+	public Conglomerado(){
+		this.usinas = new ArrayList<Usina>();
+	}
+
 	public boolean cadastraUsina(Usina usina) {
 		boolean success = false;
 
