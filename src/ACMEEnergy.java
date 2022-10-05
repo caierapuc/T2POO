@@ -15,7 +15,13 @@ public class ACMEEnergy {
 	}
 
 	public void inicializa() {
+		conglomerado.cadastraUsina(new UsinaRenovavel("Tauá", 1000, 249.84, Fontes.SOLAR));
+		conglomerado.cadastraUsina(new UsinaRenovavel("Parque Eólico de Osório", 300, 244.43, Fontes.EOLICA));
+		conglomerado.cadastraUsina(new UsinaRenovavel("Usina Hidroelétrica Belo Monte", 11233, 206.03, Fontes.HIDRICA));
 
+		conglomerado.cadastraUsina(new UsinaNaoRenovavel("Angra 2", 1350, 349.15, Combustiveis.NUCLEAR));
+		conglomerado.cadastraUsina(new UsinaNaoRenovavel("Usina GNA I", 1338.3, 1338.78, Combustiveis.CARVAO));
+		conglomerado.cadastraUsina(new UsinaNaoRenovavel("Usina Fictícia", 5000, 100, Combustiveis.PETROLEO));
 	}
 
 	public void executa() {
