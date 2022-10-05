@@ -86,6 +86,11 @@ public class ACMEEnergy {
 				nome = sc.nextLine();
 			}
 
+			if (conglomerado.pesquisaUsina(nome) != null){
+				System.out.println("\nUsina repetida.\n");
+				return;	
+			}
+
 			System.out.print("Insira o custo do MWh da Usina: ");
 			aux = sc.nextLine();
 

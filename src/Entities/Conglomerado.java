@@ -36,7 +36,9 @@ public class Conglomerado {
 
 	//TODO
 	public ArrayList<Usina> listaTodasUsinas() {
-		return null;
+		if (this.usinas.size() <= 0)
+			return null;
+		return this.usinas;
 	}
 
 	public double consultaPreco(String nome) {
