@@ -14,7 +14,7 @@ public class UsinaNaoRenovavel extends Usina {
 		return "2," + getNome() + "," + String.format("%.2f", getProducaoMWh()) + "," + String.format("%.2f", getCustoMWh()) + "," + this.combustivel.getNome();
 	}
 	public double calculaPrecoMWh(){
-		return (getProducaoMWh() * (getCustoMWh() * combustivel.getPercentual()));
+		return (getCustoMWh() * combustivel.getPercentual());
 	}
 	public String geraDescricao(){
 		return "Nome: " + this.getNome() + "\nFonte: "+ this.combustivel.getNome() + "(Não Renovável)\nProdução: " + String.format("%.2f", this.getProducaoMWh()) + "MWh\nCusto por MWh: R$" + String.format("%.2f", this.getCustoMWh()) +  "\nPreço do MWh: R$" + String.format("%.2f", this.calculaPrecoMWh());

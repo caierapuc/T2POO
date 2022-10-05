@@ -14,7 +14,7 @@ public class UsinaRenovavel extends Usina {
 		return "1," + getNome() + "," + String.format("%.2f", getProducaoMWh()) + "," + String.format("%.2f", getCustoMWh()) + "," + this.fonte.getNome();
 	}
 	public double calculaPrecoMWh(){
-		return (getProducaoMWh() * (getCustoMWh() * fonte.getPercentual()));
+		return (getCustoMWh() * fonte.getPercentual());
 	}
 	public String geraDescricao(){
 		return "Nome: " + this.getNome() + "\nFonte: " + this.fonte.getNome() + "(Renovável)\nProdução: " + String.format("%.2f", this.getProducaoMWh()) + "MWh\nCusto por MWh: R$" + String.format("%.2f", this.getCustoMWh()) +  "\nPreço do MWh: R$" + String.format("%.2f", this.calculaPrecoMWh());
