@@ -36,6 +36,8 @@ public class Conglomerado {
 
 	//TODO
 	public ArrayList<Usina> listaTodasUsinas() {
+		if (this.usinas.size() > 0)
+			return (ArrayList<Usina>)this.usinas.clone();
 		return null;
 	}
 
