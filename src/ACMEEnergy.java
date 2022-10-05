@@ -205,6 +205,20 @@ public class ACMEEnergy {
 
 	private void consultaPrecoMWh() {
 		try {
+			System.out.print("Insira o nome da Usina: ");
+			String nome = sc.nextLine();
+
+			while (nome.length() <= 0){
+				System.out.print("O nome da usina é obrigatório! Tente novamente: ");
+				nome = sc.nextLine();
+			}
+
+			double preco = conglomerado.consultaPreco(nome);
+
+			if (preco == -1) 
+				System.out.println("\nNenhuma Usina foi localizada com esse nome.");
+			else
+				System.out.println("\nO preço do MWh dessa usina é: R$" + preco);
 
 		} catch (Exception e) {
 
