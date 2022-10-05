@@ -185,7 +185,7 @@ public class ACMEEnergy {
 
 			if (conglomerado.listaTodasUsinas() != null){
 				for (Usina obj: conglomerado.listaTodasUsinas()){
-					System.out.println(obj.geraResumo());
+					System.out.println(obj.geraDescricao() + "\n");
 				}
 			}
 			else {

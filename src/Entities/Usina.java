@@ -13,6 +13,7 @@ public abstract class Usina {
 
 	public abstract double calculaPrecoMWh();
 	public abstract String geraResumo();
+	public abstract String geraDescricao();
 
 	public void setNome(String nome){
 		this.nome = nome;
