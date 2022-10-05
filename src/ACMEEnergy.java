@@ -179,9 +179,24 @@ public class ACMEEnergy {
 
 	private void pesquisarUmaUsina() {
 		try {
+			System.out.print("Insira o nome da Usina: ");
+			String nome = sc.nextLine();
 
-		} catch (Exception e) {
+			while (nome.length() <= 0){
+				System.out.print("O nome da usina é obrigatório! Tente novamente: ");
+				nome = sc.nextLine();
+			}
 
+			Usina usina = conglomerado.pesquisaUsina(nome);
+
+			if (usina != null)
+				System.out.println("\n" + usina.geraDescricao());
+			else
+				System.out.println("\nNenhuma usina localizada com este nome.");
+		}
+		catch (Exception e) {
+			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -197,7 +212,8 @@ public class ACMEEnergy {
 			else {
 				System.out.println("Nenhuma usina cadastrada.");
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
 			System.out.println(e.getMessage());
 		}
@@ -220,16 +236,20 @@ public class ACMEEnergy {
 			else
 				System.out.println("\nO preço do MWh dessa usina é: R$" + preco);
 
-		} catch (Exception e) {
-
+		}
+		catch (Exception e) {
+			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			System.out.println(e.getMessage());
 		}
 	}
 
 	private void salvarDadosArquivo() {
 		try {
 
-		} catch (Exception e) {
-
+		}
+		catch (Exception e) {
+			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			System.out.println(e.getMessage());
 		}
 	}
 }
