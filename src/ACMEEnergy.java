@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import Entities.Conglomerado;
+import Entities.Usina;
 import Entities.UsinaNaoRenovavel;
 import Entities.UsinaRenovavel;
 import Enums.*;
@@ -103,7 +104,7 @@ public class ACMEEnergy {
 			System.out.print("Insira a produção de MWh da Usina: ");
 			aux = sc.nextLine();
 
-			while (!aux.matches("\\d{0,2}\\.\\d{1,2}|\\d+")) {
+			while (!aux.matches("\\d{0,10}\\.\\d{1,2}|\\d+")) {
 				System.out.print("Opção inválida, tente novamente: ");
 				aux = sc.nextLine();
 			}
@@ -180,9 +181,19 @@ public class ACMEEnergy {
 
 	private void listaTodasUsinas() {
 		try {
+			System.out.println();
 
+			if (conglomerado.listaTodasUsinas() != null){
+				for (Usina obj: conglomerado.listaTodasUsinas()){
+					System.out.println(obj.geraResumo());
+				}
+			}
+			else {
+				System.out.println("Nenhuma usina cadastrada.");
+			}
 		} catch (Exception e) {
-
+			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			System.out.println(e.getMessage());
 		}
 	}
 
