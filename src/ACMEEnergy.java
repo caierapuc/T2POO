@@ -39,7 +39,7 @@ public class ACMEEnergy {
 			System.out.print("Digite a opção desejada: ");
 			aux = sc.nextLine();
 
-			while (!aux.matches("[0-4]")) {
+			while (!aux.matches("[0-5]")) {
 				System.out.print("Opção inválida, tente novamente: ");
 				aux = sc.nextLine();
 			}
@@ -245,7 +245,18 @@ public class ACMEEnergy {
 
 	private void salvarDadosArquivo() {
 		try {
+			System.out.print("Insira o nome do Arquivo: ");
+			String nome = sc.nextLine();
 
+			while (nome.length() <= 0){
+				System.out.print("O nome da arquivo é obrigatório! Tente novamente: ");
+				nome = sc.nextLine();
+			}
+
+			if (conglomerado.salvaDadosArquivo(nome))
+				System.out.println("\nArquivo salvo com sucesso!");
+			else
+				throw new Exception("Não foi possível salvar o arquivo!");
 		}
 		catch (Exception e) {
 			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");

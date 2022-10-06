@@ -11,7 +11,7 @@ public class UsinaNaoRenovavel extends Usina {
 	}
 
 	public String geraResumo(){
-		return "2," + getNome() + "," + String.format("%.2f", getProducaoMWh()) + "," + String.format("%.2f", getCustoMWh()) + "," + this.combustivel.getNome();
+		return "2," + getNome() + "," + String.format("%.2f", getProducaoMWh()) + "," + String.format("%.2f", getCustoMWh()) + "," + this.combustivel.getNome() + "\n";
 	}
 	public double calculaPrecoMWh(){
 		return (getCustoMWh() * combustivel.getPercentual());

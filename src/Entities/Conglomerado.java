@@ -1,5 +1,8 @@
 package Entities;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Conglomerado {
@@ -53,8 +56,23 @@ public class Conglomerado {
 		return preco;
 	}
 
-	//TODO
-	public boolean salvaDadosArquivo(String nomeArquivo) {
+	public boolean salvaDadosArquivo(String nomeArquivo) throws IOException {
+        String separador = System.getProperty("file.separator");
+		File file = new File(new File("").getAbsolutePath() + separador + "out" + separador + nomeArquivo + ".csv");
+
+		if (file.exists());
+			file.delete();
+		file.createNewFile();
+
+		try (FileWriter fw = new FileWriter(file)) {
+			for (Usina obj: this.usinas){
+				fw.append(obj.geraResumo());
+			}
+			fw.close();
+		}
+
+		if (file.exists())
+			return true;
 		return false;
 	}
 
