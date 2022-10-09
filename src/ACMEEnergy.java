@@ -1,9 +1,7 @@
 import java.util.Scanner;
-import Entities.Conglomerado;
-import Entities.Usina;
-import Entities.UsinaNaoRenovavel;
-import Entities.UsinaRenovavel;
+import Entities.*;
 import Enums.*;
+import Exceptions.*;
 
 public class ACMEEnergy {
 	private Conglomerado conglomerado;
@@ -25,50 +23,57 @@ public class ACMEEnergy {
 	}
 
 	public void executa() {
-		int opcao = 0;
-		String aux = "";
-		do {
-			System.out.println("=========================================\n");
-			System.out.println("Opcoes:");
-			System.out.println("[1] Cadastrar nova usina.");
-			System.out.println("[2] Pesquisar uma usina.");
-			System.out.println("[3] Listar todas as usinas.");
-			System.out.println("[4] Consulta o preço do MHh.");
-			System.out.println("[5] Salvar usinas em arquivo.");
-			System.out.println("[0] Sair.");
-			System.out.print("Digite a opção desejada: ");
-			aux = sc.nextLine();
-
-			while (!aux.matches("[0-5]")) {
-				System.out.print("Opção inválida, tente novamente: ");
+		try {
+			int opcao = 0;
+			String aux = "";
+			do {
+				System.out.println("=========================================\n");
+				System.out.println("Opcoes:");
+				System.out.println("[1] Cadastrar nova usina.");
+				System.out.println("[2] Pesquisar uma usina.");
+				System.out.println("[3] Listar todas as usinas.");
+				System.out.println("[4] Consulta o preço do MHh.");
+				System.out.println("[5] Salvar usinas em arquivo.");
+				System.out.println("[0] Sair.");
+				System.out.print("Digite a opção desejada: ");
 				aux = sc.nextLine();
-			}
-
-			opcao = Integer.parseInt(aux);
-
-			switch (opcao) {
-				case 1:
-					this.cadastrarNovaUsina();
-					break;
-				case 2:
-					this.pesquisarUmaUsina();
-					break;
-				case 3:
-					this.listaTodasUsinas();
-					break;
-				case 4:
-					this.consultaPrecoMWh();
-					break;
-				case 5:
-					this.salvarDadosArquivo();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Opcao inválida.");
-			}
-		} while (opcao != 0);
-		sc.close();
+				
+				while (!aux.matches("[0-5]")) {
+					System.out.print("Opção inválida, tente novamente: ");
+					aux = sc.nextLine();
+				}
+				
+				opcao = Integer.parseInt(aux);
+				
+				switch (opcao) {
+					case 1:
+						this.cadastrarNovaUsina();
+						break;
+					case 2:
+						this.pesquisarUmaUsina();
+						break;
+					case 3:
+						this.listaTodasUsinas();
+						break;
+					case 4:
+						this.consultaPrecoMWh();
+						break;
+					case 5:
+						this.salvarDadosArquivo();
+						break;
+					case 0:
+						break;
+					default:
+						throw new InvalidOptionException();
+				}
+			} while (opcao != 0);
+			sc.close();
+		}
+		catch (Exception e){
+			if (e instanceof InvalidOptionException)
+				System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void cadastrarNovaUsina() {
@@ -140,7 +145,7 @@ public class ACMEEnergy {
 						conglomerado.cadastraUsina(new UsinaRenovavel(nome, producaoMWh, custoMHw, Fontes.HIDRICA));
 						break;
 					default:
-						System.out.println("Não foi possível identificar o tipo de fonte, tente novamente!");
+						throw new InvalidOptionException();
 				}
 			}
 			else {
@@ -167,12 +172,13 @@ public class ACMEEnergy {
 						conglomerado.cadastraUsina(new UsinaNaoRenovavel(nome, producaoMWh, custoMHw, Combustiveis.NUCLEAR));
 						break;
 					default:
-						System.out.println("Não foi possível identificar o tipo de combustível, tente novamente!");
+						throw new InvalidOptionException();
 				}
 			}
 		}
 		catch (Exception e) {
-			System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
+			if (e instanceof InvalidOptionException)
+				System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
 			System.out.println(e.getMessage());
 		}
 	}
