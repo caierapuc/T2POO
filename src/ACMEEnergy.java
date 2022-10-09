@@ -254,7 +254,7 @@ public class ACMEEnergy {
 			}
 
 			if (conglomerado.salvaDadosArquivo(nome))
-				System.out.println("\nArquivo salvo com sucesso!");
+				System.out.println("\nArquivo salvo no diretório 'out' do projeto. Operação finalizada com sucesso!");
 			else
 				throw new Exception("Não foi possível salvar o arquivo!");
 		}
