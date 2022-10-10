@@ -70,7 +70,7 @@ public class ACMEEnergy {
 			sc.close();
 		}
 		catch (Exception e){
-			if (e instanceof InvalidOptionException)
+			if (!(e instanceof InvalidOptionException))
 				System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
 			System.out.println(e.getMessage());
 		}
@@ -177,7 +177,7 @@ public class ACMEEnergy {
 			}
 		}
 		catch (Exception e) {
-			if (e instanceof InvalidOptionException)
+			if (!(e instanceof InvalidOptionException))
 				System.out.println("Algum erro foi encontrado! Entre em contato com o suporte técnico");
 			System.out.println(e.getMessage());
 		}

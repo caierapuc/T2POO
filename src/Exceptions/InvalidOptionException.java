@@ -4,7 +4,7 @@ public class InvalidOptionException extends Exception {
     private String message;
 
     public InvalidOptionException(){
-        this.message = "Algo inesperado aconteceu! Contate um administrador.";
+        this.message = "Opção não encontrada! Contate um administrador.";
     }
 
     public String getMessage(){
